@@ -5,20 +5,53 @@ import java.util.Scanner;
 public class Negozio
 {
     private ArrayList<Videogame> catalogue = new ArrayList<>();
+    private Scanner scan =new Scanner(System.in);
 
     public ArrayList<Videogame> getCatalogue() {
         return catalogue;
     }
+    private double ScanNum(String num)
+    {
+        double numToRet = 0;
+        if(isNumCorrect(num))
+        {
+            numToRet = Double.parseDouble(num);
+        }
+        else
+        {
+            System.out.println("inserire un numero corretto ");
+            ScanNum(scan.next());
+        }
+        return numToRet;
+    }
+    private boolean isNumCorrect(String num)
+    {
+        boolean ret = true;
+        double input = -1;
+        try
+        {
+             input = Double.parseDouble(num);
+        }
+        catch(NumberFormatException e)
+        {
 
+            ret = false;
+        }
+        finally
+        {
+            if(input<0)ret = false;
+        }
+        return ret;
+    }
     public void addGame()
     {
-        Scanner scan =new Scanner(System.in);
+
         System.out.println("inserisci nome : ");
         String inputName = scan.next();
         System.out.println("inserisci prezzo :");
-        double inputPrice = scan.nextDouble();
+        double inputPrice = ScanNum(scan.next());
         System.out.print("inserisci quante copie vuoi inserire: ");
-        int inputQuantity = scan.nextInt();
+        double inputQuantity = ScanNum(scan.next());
         catalogue.add(new Videogame(inputName,inputPrice,inputQuantity));
     }
     public void Buy(User u)

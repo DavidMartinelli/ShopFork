@@ -35,10 +35,14 @@ public class Program
         do {
             System.out.println("digita ac per inserire un gioco all'interno del catalogo,");
             System.out.println("premi a per aggiungere un gioco al tuo carrello, ");
-            System.out.println("premi c per mostrare il conto,premi s per mostrare il tuo saldo,premi e per uscire,premi b per comprare");
-            negozio.ShowCatalogue();
+            System.out.println("premi c per mostrare il conto,premi s per mostrare il tuo saldo,");
+            System.out.println("premi e per uscire,premi b per comprare, premi m per mostrare il catalogo");
+
              input = scan.next();
             switch (input) {
+                case "m":
+                    negozio.ShowCatalogue();
+                    break;
                 case "ac":
                     negozio.addGame();
                     break;
